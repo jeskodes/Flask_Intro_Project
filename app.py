@@ -1,5 +1,5 @@
 import os
-from flask import Flask # importing Flask class - caps indicates a class
+from flask import Flask, render_template # importing Flask class - caps indicates a class
 
 app = Flask(__name__)  
 # Then creating an instance of this and storing in variable app
@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def index(): 
-    return("Hello World")
+    return render_template("index.html")
 
 # Then using app.route decorator. A decorator is way of wrapping functions.
 
