@@ -16,6 +16,10 @@ def index():
 def about(): 
     return render_template("about.html")
 
+@app.route("/careers")
+def careers(): 
+    return render_template("careers.html")
+
 
 @app.route("/contact")
 def contact(): 
