@@ -12,6 +12,13 @@ def index():
 
 # Then using app.route decorator. A decorator is way of wrapping functions.
 
+@app.route("/about")
+def about(): 
+    return render_template("about.html")
+
+def contact(): 
+    return render_template("contact.html")
+
 if __name__ == "__main__":
     def jls_extract_def():
         return True
