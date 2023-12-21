@@ -2,7 +2,7 @@
 {% block content %}
 
 <!-- Variable to inject data from json file.  -->
-{{ company[0]["name"] }} 
+<!-- {{ company[0]["name"] }}  -->
 <!-- [0] returns first element from string. Wrap name in string to get first element in list -->
 
 
@@ -20,28 +20,40 @@
         action. The superstitious Dwarves also considered thirteen to be an unlucky number, and as Gandalf had planned
         to leave on other business, welcomed a fourteenth to fill into their party.</p>
 
-<div class="row featurette">
-    <div class="col-md-7">
-        <h3>Thorin Oakenshield</h3>
-            <p>Thorin II "Oakenshield", eventually called King under the Mountain or Mountain King[1], was the son of Thráin II,
-        the older brother of Frerin and Dís, the grandson of King Thrór and the uncle of Fíli and Kíli. Thorin was best
-        known for his deeds as leader of a company that infiltrated the lost Kingdom under the Mountain to take it back
-        from Smaug and for leading an alliance of Men, Dwarves, and Elves in the Battle of Five Armies.</p>
-    </div>
-    <div class="col-md-5">
-        <img src="https://static.wikia.nocookie.net/lotr/images/b/bf/Thorin-Oakenshield_in_The_Hobbit.jpg" alt="Photo of Thorin from film The Hobbit">
-    </div>
-</div>
+{% for member in company %} <!-- Add for loop to iterate through data in json file -->
 
-<div class="row featurette">
-    <div class="col-md-5">
-        <img src="https://static.wikia.nocookie.net/lotr/images/a/a6/HBT-DWF-003.jpg" alt="Fili and Kili from the film the Hobbit">
+<!-- {{ loop.index }}  -->
+<!-- Add this line so in html rendering can see which iteration is which with numbers-->
+
+    <div class="row featurette">
+
+    {% if loop.index %2 !=0 %} <!-- Add if statement -->
+    <!-- if number in list is not even i.e. divisible by two then do something - display that member to the page -->
+
+            <div class="col-md-7">
+                <h3>{{ loop.index }}. {{ member.name }}</h3>
+                    <p> {{ member.description }}</p>
+            </div>
+            <div class="col-md-5">
+                <img src="{{ member.image_source }}" alt="" class="featurette-image image-responsive">
+            </div>
+
+    {% else %} <!-- Will display text on left if odd number -->
+        <div class="col-md-5">
+            <img src="{{ member.image_source }}" alt="" class="featurette-image image-responsive">
+        </div>
+        <div class="col-md-7">
+            <h3>{{ loop.index }}. {{ member.name }}</h3>
+                <p> {{ member.description }}</p>
+        </div>
+
+    {% endif %}
     </div>
-    <div class="col-md-7">
-        <h3>Fili and Kili </h3>
-        <p>Fíli and Kíli were Dwarvern brothers and were also the youngest of the thirteen Dwarves who set out with
-            Thorin Oakenshield's company, along with Gandalf and Bilbo Baggins, to reclaim the Lonely Mountain from the
-            dragon Smaug.</p>
-    </div>
-</div>
+
+    <hr class="featurette-divider">
+
+    <!-- Highlight code and press tab to properly indent code -->
+
+{% endfor %}
+
 {% endblock %}
