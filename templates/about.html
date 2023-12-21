@@ -50,9 +50,16 @@
     {% endif %}
     </div>
 
-    <hr class="featurette-divider">
+    {% if loop.index != loop.length %} <!-- Removing hr after final description image combo -->
+
+        <hr class="featurette-divider">
+
+    {% endif %}
 
     <!-- Highlight code and press tab to properly indent code -->
+
+    <!-- Full templating language and built in functions for jinja can be found at jinja.palletsprojects.com. -->
+    <!-- Can use builtin filters -->
 
 {% endfor %}
 
