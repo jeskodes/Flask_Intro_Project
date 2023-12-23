@@ -1,6 +1,6 @@
 import os
 import json
-from flask import Flask, render_template # importing Flask class - caps indicates a class
+from flask import Flask, render_template, request # importing Flask class - caps indicates a class, render_template and request
 
 app = Flask(__name__)  
 # Then creating an instance of this and storing in variable app
@@ -36,8 +36,11 @@ def careers():
     return render_template("careers.html", page_title="Come Work with Us")
 
 
-@app.route("/contact")
+@app.route("/contact", methods=["GET", "POST"])
 def contact(): 
+    if request.method == "POST":
+        print(request.form.get("name"))
+
     return render_template("contact.html", page_title="Contact Us")
 
 if __name__ == "__main__":
