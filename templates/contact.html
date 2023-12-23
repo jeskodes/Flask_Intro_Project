@@ -4,6 +4,37 @@
 
     <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
+                
+            {% with message = get_flashed_messages() %}
+                {% if messages %}
+                    <ul class="flashes"></ul>
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            <!-- Above the form, just inside of the first column, I will type: {% with messages = get_flashed_messages()
+                %}. get_flashed_messages() will return any of
+                the messages that we've created using the Flash() function on the backend, and store
+                that in a variable called messages.
+                We need to close our {% endwith %} as well.
+                Next, we are going to check if there are any messages to retrieve.
+                {% if messages %} Let's also just close our {% endif %} here
+                as well.
+                If we have successfully returned any messages from our get_flashed_messages() function,
+                then we are going to create some HTML.
+                I want to display each message within an unordered list, so I can build that using "ul.flashes"
+                which will assign a class name of 'flashes' that we can style later if we wanted to.
+                Inside of our <ul>, we want to iterate through each of the messages, because it's possible
+                for us to receive more than one from the backend on a single page.
+                {% for message in messages %}. Don't forget to close that for-loop using:
+                {% endfor %}. Finally, for each message, we will insert
+                a line item: <li>{{ message }}</li>. -->
+
+
+
+
             <p>Want to get in touch? Fill out the form below to send me a message and I will get back to you as soon as
                 possible!</p>
             <form method="POST" name="sentMessage" id="contactForm" novalidate>

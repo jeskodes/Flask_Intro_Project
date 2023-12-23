@@ -1,11 +1,30 @@
 import os
 import json
-from flask import Flask, render_template, request # importing Flask class - caps indicates a class, render_template and request
+from flask import Flask, render_template, request, flash # importing Flask class - caps indicates a class, render_template and request
+# import function called flash so can display flashed message to user when form submitted. 
+
+if os.path.exists("env.py"): 
+    import env # a __pycache__ file is created. Add to gitignore. the / at the end identifies it as a directory, so will ignore all in it too. 
+
+# But, we only want to import env, if the system can find an env.py file.
+# if os.path.exists("env.py"): import env
+# Once we save that, a new directory called 'pycache' is created.
+# We don't need to bother pushing that to GitHub either, so let's go back into our .gitignore
+# file and type: __pycache__/.
+# The '/' at the end identifies it as a directory, and so will therefore ignore everything within
+# that folder as well.
+
+
+# Letters next to files: 
+# u untracked - if add to gitignore will disappear as not being tracked by github. 
+# m modified since last committ. 
 
 app = Flask(__name__)  
 # Then creating an instance of this and storing in variable app
 # The first variable is the name of the application's module or package.
 # Flask needs this so it knows where to look for templates and static files. 
+
+app.secret_key = os.environ.get("SECRET_KEY") #then going to call the flash() function from our contact form. 
 
 @app.route("/")
 def index(): 
@@ -39,9 +58,13 @@ def careers():
 @app.route("/contact", methods=["GET", "POST"])
 def contact(): 
     if request.method == "POST":
-        print(request.form.get("name"))
+        flash("Thanks {}, we have received your message!".format(request.form.get("name")))
 
     return render_template("contact.html", page_title="Contact Us")
+
+# I'm going to call the
+# Flash() function.
+# flash("Thanks {}, we have received your message!".format(request.form.get("name"))).
 
 if __name__ == "__main__":
     def jls_extract_def():
