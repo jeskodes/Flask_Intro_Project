@@ -1,6 +1,8 @@
 import os
 import json
-from flask import Flask, render_template, request, flash # importing Flask class - caps indicates a class, render_template and request
+from flask import Flask, render_template, request, flash 
+
+# importing Flask class - caps indicates a class, render_template and request
 # import function called flash so can display flashed message to user when form submitted. 
 
 if os.path.exists("env.py"): 
