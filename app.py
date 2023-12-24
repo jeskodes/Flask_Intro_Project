@@ -1,10 +1,6 @@
 import os
 import json
 from flask import Flask, render_template, request, flash 
-
-# importing Flask class - caps indicates a class, render_template and request
-# import function called flash so can display flashed message to user when form submitted. 
-
 if os.path.exists("env.py"): 
     import env # a __pycache__ file is created. Add to gitignore. the / at the end identifies it as a directory, so will ignore all in it too. 
 
@@ -13,8 +9,13 @@ if os.path.exists("env.py"):
 # Once we save that, a new directory called 'pycache' is created.
 # We don't need to bother pushing that to GitHub either, so let's go back into our .gitignore
 # file and type: __pycache__/.
-# The '/' at the end identifies it as a directory, and so will therefore ignore everything within
+# The '/' at the end identifies it sas a directory, and so will therefore ignore everything within
 # that folder as well.
+
+# importing Flask class - caps indicates a class, render_template and request
+# import function called flash so can display flashed message to user when form submitted. 
+
+
 
 
 # Letters next to files: 
